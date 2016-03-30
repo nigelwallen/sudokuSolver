@@ -1,0 +1,30 @@
+﻿.rowBreak {
+    border-bottom:solid black 1px;
+}
+.colBreak {
+    border-right:solid black 1px;
+}
+span {
+    padding:5px;
+}
+.sudoku {
+    display: inline-block;
+    border:solid black 2px;
+    padding:5px;
+    margin: 10px;
+}
+    .sudoku input[type=number] {
+        text-align:center;
+        margin:2px;
+        border:solid 1px lightblue;
+    }
+    .sudoku div {
+        padding-top:2px;
+        padding-bottom:2px;
+    }
+.error {
+    border:red;
+}
+.diff{
+    color: red;
+}

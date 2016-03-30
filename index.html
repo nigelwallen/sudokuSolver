@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Sudoku Solver</title>
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" type="text/css" href="sudoku.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.angularjs.org/1.5.0-rc.2/angular.min.js"></script>
+        <script src="apps.js"></script>
+        <script src="sudokuDirective.js"></script>
+        <script src="sudokuService.js"></script>
+        <script src="sudokuController.js"></script>
+    </head>
+    <body ng-app="app" ng-controller="sudokuC as sudoku">
+        <h1>SUDOKU SOLVER</h1>
+        <div ng-hide="sudoku.passes[1]">
+            <h2>EDIT PUZZLE</h2>
+            <div>
+                <div sudoku-display edit="true" current-pass="sudoku.puzzle"></div>
+            </div>
+            <input type="button" ng-click="sudoku.solve(sudoku.puzzle)" value="SOLVE">
+            <input type="button" value="RESET PUZZLE" ng-click="sudoku.puzzle=sudoku.puzzleReset()">
+        </div>
+        <div ng-show="sudoku.passes[1]">
+            <h2>RESULTS</h2>
+            <p>{{sudoku.status}}</p>
+            <div>
+                <div sudoku-display edit="false" current-pass="sudoku.puzzle"></div>
+                <div ng-repeat="(key,val) in sudoku.passes" 
+                     sudoku-display edit="false" current-pass="val" 
+                     last-pass=" key==='1' ? sudoku.puzzle: sudoku.passes[key-1]"></div>
+            </div>
+            <input type="button" value="EDIT PUZZLE" ng-click="sudoku.passReset()">
+        </div>
+    </body>
+</html>

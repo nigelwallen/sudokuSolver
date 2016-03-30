@@ -1,0 +1,10 @@
+<div class="sudoku">
+    <div ng-repeat="row in rowColNums" ng-class="{rowBreak : Break(row)}">
+        <span ng-class="{colBreak : Break(col)}" ng-repeat="col in rowColNums">
+            <input ng-if="edit" type="number" min="0" max="9" size="1" ng-model="currentPass[calculatePosition(row,col)]">
+            <span ng-if="!edit" ng-class="{diff: isDifferent(currentPass[calculatePosition(row,col)],lastPass[calculatePosition(row,col)])}">
+                {{currentPass[calculatePosition(row,col)]}}
+            </span>
+        </span>
+    </div>
+</div>
